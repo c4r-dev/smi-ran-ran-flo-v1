@@ -4,13 +4,23 @@ import { useState } from "react";
 
 export default function Home() {
   const [step, setStep] = useState("initial"); // Tracks the current step in the flow
+  const [sampleSize, setSampleSize] = useState(""); // Tracks selected sample size
 
   // Handlers for various steps
-  const handleSmallSample = () => setStep("secondQuestion");
-  const handleLargeSample = () => setStep("largeResult");
+  const handleContinue = () => {
+    if (sampleSize === "small" || sampleSize === "moderate") {
+      setStep("secondQuestion");
+    } else if (sampleSize === "large") {
+      setStep("largeResult");
+    }
+  };
+  
   const handleStrongCovariates = () => setStep("stratResult");
   const handleNoStrongCovariates = () => setStep("blockResult");
-  const handleReset = () => setStep("initial");
+  const handleReset = () => {
+    setStep("initial");
+    setSampleSize("");
+  };
 
   return (
     <div className="flowchart-container">
@@ -20,17 +30,55 @@ export default function Home() {
       {step === "initial" && (
         <>
           <h4 className="question-heading">What is your sample size?</h4>
+          
+          <div style={{ marginBottom: '20px' }}>
+            <div style={{ marginBottom: '10px' }}>
+              <input 
+                type="radio" 
+                id="small" 
+                name="sampleSize" 
+                value="small" 
+                checked={sampleSize === "small"}
+                onChange={() => setSampleSize("small")}
+                style={{ marginRight: '10px' }}
+              />
+              <label htmlFor="small">Small</label>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <input 
+                type="radio" 
+                id="moderate" 
+                name="sampleSize" 
+                value="moderate" 
+                checked={sampleSize === "moderate"}
+                onChange={() => setSampleSize("moderate")}
+                style={{ marginRight: '10px' }}
+              />
+              <label htmlFor="moderate">Moderate</label>
+            </div>
+            
+            <div style={{ marginBottom: '10px' }}>
+              <input 
+                type="radio" 
+                id="large" 
+                name="sampleSize" 
+                value="large" 
+                checked={sampleSize === "large"}
+                onChange={() => setSampleSize("large")}
+                style={{ marginRight: '10px' }}
+              />
+              <label htmlFor="large">Large</label>
+            </div>
+          </div>
+          
           <button 
-            onClick={handleSmallSample}
+            onClick={handleContinue}
             className="action-button"
+            disabled={!sampleSize}
+            style={{ opacity: !sampleSize ? 0.6 : 1 }}
           >
-            Small to Moderate
-          </button>
-          <button 
-            onClick={handleLargeSample}
-            className="action-button"
-          >
-            Large
+            Continue
           </button>
         </>
       )}
