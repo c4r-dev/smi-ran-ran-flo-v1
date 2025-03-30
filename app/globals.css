@@ -91,3 +91,76 @@ h2 {
   margin-top: 80px;
   padding: 0 10%;
 }
+
+/* Flowchart specific styles */
+.flowchart-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 80px auto 0;
+}
+
+.main-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.question-heading {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.action-button {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-right: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #2563eb;
+}
+
+.result-container {
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-top: 1.25rem;
+}
+
+.result-heading {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.result-description {
+  margin-bottom: 0.75rem;
+}
+
+.result-list {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.reset-button {
+  background-color: #6b7280;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+  background-color: #4b5563;
+}

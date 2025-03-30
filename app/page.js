@@ -13,22 +13,22 @@ export default function Home() {
   const handleReset = () => setStep("initial");
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold mb-6">Randomization Method Selection Guide</h1>
+    <div className="flowchart-container">
+      <h1 className="main-heading">This interactive flowchart guides researchers through selecting an appropriate randomization method for their study design. Users answer questions about their study characteristics to receive a recommended randomization approach with relevant considerations and implementation guidance.</h1>
 
       {/* Initial Question */}
       {step === "initial" && (
         <>
-          <h4 className="text-lg font-medium mb-3">What is your sample size?</h4>
+          <h4 className="question-heading">What is your sample size?</h4>
           <button 
             onClick={handleSmallSample}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded mr-3"
+            className="action-button"
           >
             Small to Moderate
           </button>
           <button 
             onClick={handleLargeSample}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded"
+            className="action-button"
           >
             Large
           </button>
@@ -38,16 +38,16 @@ export default function Home() {
       {/* Second Question */}
       {step === "secondQuestion" && (
         <>
-          <h4 className="text-lg font-medium mb-3">Are there strong covariates that need to be controlled?</h4>
+          <h4 className="question-heading">Are there strong covariates that need to be controlled?</h4>
           <button 
             onClick={handleStrongCovariates}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded mr-3"
+            className="action-button"
           >
             Yes
           </button>
           <button 
             onClick={handleNoStrongCovariates}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded"
+            className="action-button"
           >
             No
           </button>
@@ -56,13 +56,13 @@ export default function Home() {
 
       {/* Large Sample Result */}
       {step === "largeResult" && (
-        <div className="border border-gray-300 rounded p-4 mt-5">
-          <h4 className="text-lg font-medium mb-2">Recommended Method: Simple Randomization</h4>
-          <p className="mb-3">
+        <div className="result-container">
+          <h4 className="result-heading">Recommended Method: Simple Randomization</h4>
+          <p className="result-description">
             With a large sample size, simple randomization is appropriate as groups will
             likely be balanced due to the law of large numbers.
           </p>
-          <ul className="list-disc pl-5 mb-4">
+          <ul className="result-list">
             <li>Ensures complete randomness</li>
             <li>Easy to implement</li>
             <li>Requires minimal resources</li>
@@ -70,7 +70,7 @@ export default function Home() {
           </ul>
           <button 
             onClick={handleReset}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded"
+            className="reset-button"
           >
             Start Over
           </button>
@@ -79,13 +79,13 @@ export default function Home() {
 
       {/* Stratified Randomization Result */}
       {step === "stratResult" && (
-        <div className="border border-gray-300 rounded p-4 mt-5">
-          <h4 className="text-lg font-medium mb-2">Recommended Method: Stratified Randomization</h4>
-          <p className="mb-3">
+        <div className="result-container">
+          <h4 className="result-heading">Recommended Method: Stratified Randomization</h4>
+          <p className="result-description">
             When important covariates need to be controlled, stratified randomization helps
             ensure balance across treatment groups.
           </p>
-          <ul className="list-disc pl-5 mb-4">
+          <ul className="result-list">
             <li>Controls for known prognostic factors</li>
             <li>Ensures balanced groups for key variables</li>
             <li>Requires careful selection of stratification factors</li>
@@ -93,7 +93,7 @@ export default function Home() {
           </ul>
           <button 
             onClick={handleReset}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded"
+            className="reset-button"
           >
             Start Over
           </button>
@@ -102,13 +102,13 @@ export default function Home() {
 
       {/* Block Randomization Result */}
       {step === "blockResult" && (
-        <div className="border border-gray-300 rounded p-4 mt-5">
-          <h4 className="text-lg font-medium mb-2">Recommended Method: Block Randomization</h4>
-          <p className="mb-3">
+        <div className="result-container">
+          <h4 className="result-heading">Recommended Method: Block Randomization</h4>
+          <p className="result-description">
             For smaller studies without strong covariates, block randomization helps maintain
             balanced group sizes.
           </p>
-          <ul className="list-disc pl-5 mb-4">
+          <ul className="result-list">
             <li>Ensures equal group sizes</li>
             <li>Simple to implement</li>
             <li>Reduces risk of imbalance in small studies</li>
@@ -116,7 +116,7 @@ export default function Home() {
           </ul>
           <button 
             onClick={handleReset}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded"
+            className="reset-button"
           >
             Start Over
           </button>
